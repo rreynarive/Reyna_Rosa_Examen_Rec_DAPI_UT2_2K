@@ -32,14 +32,15 @@ def check_phone(num_tel):
         - num_tel: Es un valor str con un numero telefonico con formato "(XYZ)ABC-DEFGHI"
     Salida:
         - pais: variable str que correspondera al pais consultado en el diccionario
-        - numero: variable str, que sera el numero de telefono reformateado correctamente.
+        - telefono: variable str, que sera el numero de telefono reformateado correctamente.
     """
     list_tel = [num_tel[:-10], num_tel[-10:]]
     prefijo = list_tel[0][1:-1]
     pais = countries_dict.get(str(prefijo))
     num_sep = list_tel[1].split("-")
     numero = num_sep[0] + num_sep[1]
-    return print("El numero +" + prefijo + "-" + numero + " es de " + pais)
+    telefono = prefijo + "-" + numero
+    return print("El numero +" + telefono + " es de " + pais)
 
 def calculate_bill(multas_radar, multas_ITV, multas_estupefacientes):
     """ Esta funcion suma la cantidad de multas y devuelve el pago total
@@ -51,3 +52,13 @@ def calculate_bill(multas_radar, multas_ITV, multas_estupefacientes):
         - La suma de los numeros, variable tipo int.
     """
     return int(multas_radar + multas_ITV + multas_estupefacientes)
+
+def check_DGT():
+    """ Esta funcion abrira un fichero de texto, comprobaara los datos llamando a las otras funciones,
+    despues sobreescribira los datos en el mismo fichero.
+    Parametros:
+        - : Una cadena str con la ruta del fichero (.csv)
+    Salida:
+        - El mismo fichero pero sobre-escribiendo los datos
+    """
+    return
