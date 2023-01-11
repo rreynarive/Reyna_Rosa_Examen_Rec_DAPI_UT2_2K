@@ -1,3 +1,4 @@
+import csv
 nif_dict = {"0": "T", "1": "R", "2": "W", "3": "A", "4": "G", "5": "M",
             "6": "Y", "7": "F", "8": "P", "9": "D", "10": "X", "11": "B",
             "12": "N", "13": "J", "14": "Z", "15": "S", "16": "Q", "17": "V",
@@ -40,8 +41,7 @@ def check_phone(num_tel):
     num_sep = list_tel[1].split("-")
     numero = num_sep[0] + num_sep[1]
     telefono = prefijo + "-" + numero
-    return print("El numero +" + telefono + " es de " + pais)
-
+    return telefono, pais
 def calculate_bill(multas_radar, multas_ITV, multas_estupefacientes):
     """ Esta funcion suma la cantidad de multas y devuelve el pago total
     Parametros:
@@ -61,4 +61,8 @@ def check_DGT():
     Salida:
         - El mismo fichero pero sobre-escribiendo los datos
     """
+    with open("DGT.csv", encoding="utf-8") as csvfile:
+        reader = csv.reader(csvfile, delimiter=",", dialect=csv.excel)
     return
+
+
